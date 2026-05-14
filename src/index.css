@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #08080F;
+  --color-card: #13131F;
+  --color-card-border: #1F1F30;
+  --color-violet: #A855F7;
+  --color-violet-deep: #9333EA;
+  --color-muted: #8B8FA8;
+  --color-input-bg: #0D0D1A;
+  --color-input-border: #2A2A40;
+  --color-winner-bg: #1A0F2E;
+  --color-loser-bg: #0F0F18;
+  --color-loser-text: #2A2A3A;
+  --color-badge-upcoming: #1E1E30;
+
+  --font-sans: 'Inter', sans-serif;
+
+  --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #08080F;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #08080F;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A40;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A855F7;
+  }
+}
+
+@layer utilities {
+  .glow-violet {
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+  }
+
+  .glow-violet-lg {
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .bracket-connector {
+    stroke: #A855F7;
+    stroke-opacity: 0.4;
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .transition-premium {
+    transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+}
