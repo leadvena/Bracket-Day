@@ -14,6 +14,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <TitleUpdater />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />

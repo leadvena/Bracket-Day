@@ -5,7 +5,7 @@ import { db } from '@/lib/firebase'
 import type { Tournament, TournamentStatus, Match } from '@/types/tournament'
 import { getSportEmoji, advanceWinner } from '@/lib/bracket'
 import BracketView from '@/components/BracketView'
-import { LayoutDashboard, Copy, Check } from 'lucide-react'
+import { LayoutDashboard, Copy, Check, Link2 } from 'lucide-react'
 
 export default function ManageBracket() {
   const { tournamentId } = useParams<{ tournamentId: string }>()
@@ -76,6 +76,15 @@ export default function ManageBracket() {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const [copied, setCopied] = useState(false)
+
+  const copyLink = () => {
+    const url = `${window.location.origin}/bracket/${tournamentId}`
+    navigator.clipboard.writeText(url)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   if (loading) {
     return (
       <div className="min-h-[100dvh] bg-[#08080F] flex items-center justify-center">
@@ -92,11 +101,28 @@ export default function ManageBracket() {
       <div className="bg-[#13131F]/80 backdrop-blur-md border-b border-[#1F1F30] sticky top-0 z-40 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
+            <button
+              onClick={copyLink}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#13131F] border border-[#1F1F30] text-[#8B8FA8] hover:text-white hover:border-[#A855F7] transition-all duration-300 group"
+            >
+              {copied ? (
+                <>
+                  <Check size={16} className="text-[#A855F7]" />
+                  <span className="text-sm font-bold text-white">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Link2 size={16} className="group-hover:rotate-12 transition-transform" />
+                  <span className="text-sm font-bold">Share Bracket</span>
+                </>
+              )}
+            </button>
             <Link
               to="/dashboard"
-              className="p-2 text-[#8B8FA8] hover:text-white hover:bg-[#1F1F30] rounded-xl transition-all duration-300"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#13131F] border border-[#1F1F30] text-[#8B8FA8] hover:text-white transition-all duration-300"
             >
-              <LayoutDashboard size={20} />
+              <LayoutDashboard size={16} />
+              <span className="text-sm font-bold">Dashboard</span>
             </Link>
             <div className="h-6 w-px bg-[#1F1F30] hidden sm:block" />
             <div className="hidden sm:block">
