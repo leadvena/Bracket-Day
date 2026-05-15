@@ -76,15 +76,6 @@ export default function ManageBracket() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const [copied, setCopied] = useState(false)
-
-  const copyLink = () => {
-    const url = `${window.location.origin}/bracket/${tournamentId}`
-    navigator.clipboard.writeText(url)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
   if (loading) {
     return (
       <div className="min-h-[100dvh] bg-[#08080F] flex items-center justify-center">
