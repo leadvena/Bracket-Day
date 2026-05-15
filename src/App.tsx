@@ -9,6 +9,7 @@ import Dashboard from '@/pages/Dashboard'
 import CreateTournament from '@/pages/CreateTournament'
 import ManageBracket from '@/pages/ManageBracket'
 import PublicBracket from '@/pages/PublicBracket'
+import TitleUpdater from '@/components/TitleUpdater'
 
 function App() {
   return (
